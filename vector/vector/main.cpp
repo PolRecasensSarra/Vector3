@@ -5,6 +5,7 @@
 void main() {
 	Vec3<int> vec1(-1, 0, 1);
 	Vec3<int> vec2(0, 0, 3);
+	Vec3<int> vec3(1, 1, 1);
 	
 	//check if vector is 0
 	if (vec1.is_zero()) {
@@ -51,5 +52,6 @@ void main() {
 	std::cout << "Vector 2's component  = (" << vec2.getX() << ", " << vec2.getY() << ", " << vec2.getZ() << ")" << std::endl;
 	vec2.zero();
 	std::cout << "Vector 2's components  after zero() = (" << vec2.getX() << ", " << vec2.getY() << ", " << vec2.getZ() << ")" << std::endl;
+	std::cout << "Distance to() function = " << vec2.DistanceTo(vec3) << std::endl;
 	system("pause");
 }

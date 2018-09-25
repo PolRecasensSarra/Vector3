@@ -8,24 +8,14 @@ template <class Type>
 class Vec3 
 {
 private:
-	Type x;
-	Type y;
-	Type z;
+	Type x, y, z;
+	
 public:
 
 	Vec3() {};
-	Vec3(Type x, Type y, Type z)
-	{
-		this->x = x;
-		this->y = y;
-		this->z = z;
-	}
-	Vec3(Type x0, Type y0, Type z0, Type xf, Type yf, Type zf) 
-	{
-		x = (xf - x0);
-		y = (yf - y0);
-		z = (zf - z0);
-	}
+	Vec3(const Type &x, const Type & y, const Type & z) :x(x), y(y), z(z) {};
+	
+	Vec3(const Vec3& vec2) :x(vec2.x), y(vec2.y), z(vec2.z) {};
 
 public:
 	Type getX() const { return this->x; }
@@ -90,9 +80,16 @@ public:
 	//set 0
 	void zero() 
 	{
-		x = 0;
-		y = 0;
-		z = 0;
+		x = y = z = 0.0f;
+	}
+
+	//distance to
+	Type DistanceTo(const Vec3& v3) const {
+		Vec3 vec3;
+		vec3.x = -this->x + v3.x;
+		vec3.y = -this->y + v3.y;
+		vec3.z = -this->z + v3.z;
+		return (sqrt((vec3.x*vec3.x) + (vec3.y*vec3.y) + (vec3.z*vec3.z)));
 	}
 
 };
